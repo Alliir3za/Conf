@@ -4,11 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConfSys.Domain.Entity;
+
 [Table(nameof(User), Schema = nameof(Schema.Base))]
 public class User
 {
+    [ForeignKey(nameof(CityId))]
+    public City City { get; set; }
+    public int CityId { get; set; }
+
+    [ForeignKey(nameof(ProjectId))]
+    public Project Project { get; set; }
+    public int ProjectId { get; set; }
+
     [Key]
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     [Required]
     [MaxLength(50)]
@@ -22,10 +31,7 @@ public class User
 
     public DateTime DateOfBirth { get; set; }
 
-    [MaxLength(50)]
-    public string City { get; set; }
-
-    [MaxLength(150)]
+    [MaxLength(75)]
     [Column(TypeName = "varchar(150)")]
     public string Email { get; set; }
 

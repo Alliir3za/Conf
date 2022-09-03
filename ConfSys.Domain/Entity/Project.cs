@@ -4,17 +4,21 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConfSys.Domain.Entity;
-
-[Table(nameof(City), Schema = nameof(Schema.Base))]
-public class City
+[Table(nameof(Project), Schema = nameof(Schema.Base))]
+public class Project
 {
     [Key]
-    public int CityId { get; set; }
+    public int ProjectId { get; set; }
 
-    [MaxLength(50)]
     [Required]
+    [MaxLength(50)]
     public string Name { get; set; }
 
-    public ICollection<User> Users { get; set; }
-}
+    [MaxLength(75)]
+    public string WebSite { get; set; }
 
+    [MaxLength(200)]
+    public long Description { get; set; }
+    public ICollection<User> Users { get; set; }
+
+}

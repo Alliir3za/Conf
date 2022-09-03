@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Implement\" />
-    <Folder Include="Interface\" />
+    <ProjectReference Include="..\ConfSys.Data\ConfSys.Data.csproj" />
+    <ProjectReference Include="..\ConfSys.Domain\ConfSys.Domain.csproj" />
   </ItemGroup>
 
 </Project>
