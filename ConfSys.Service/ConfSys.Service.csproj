@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConfSys.Data\ConfSys.Data.csproj" />
-    <ProjectReference Include="..\ConfSys.Domain\ConfSys.Domain.csproj" />
   </ItemGroup>
 
 </Project>

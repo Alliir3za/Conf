@@ -1,6 +1,8 @@
-﻿using ConfSys.Data;
+﻿#nullable disable
+using ConfSys.Data;
 using ConfSys.Domain.Entity;
 using ConfSys.Service.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConfSys.Service.Implement;
 
@@ -12,13 +14,25 @@ public class UserService : IUserService
         db = new ConfSysDbContext();
     }
 
-    public List<User> GetMale()
+    public async Task<List<User>> CreatUser(string name, string family)
     {
-        throw new NotImplementedException();
+        var result = await db.Users.Where(g => g.Name == name && g.Family == family).Select(x => new User
+        {
+            Name = x.Name,
+            Family = x.Family
+        }).ToListAsync();
+
+        return result;
     }
 
-    public List<User> GetName()
+    public async Task<bool> IUserService.LogIn(string Email, string Password)
     {
-        throw new NotImplementedException();
+        var result_1 = await db.Users.FirstOrDefaultAsync(x => x.Password == Password && x.Email == Email);
+        return true;
+
+        if (result_1 == null)
+            return false;
+
     }
+
 }
