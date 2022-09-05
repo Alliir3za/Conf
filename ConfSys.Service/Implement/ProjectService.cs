@@ -17,10 +17,7 @@ public class ProjectService : IProjectService
     public async Task<bool> CreateProjectAsync(Project model)
     {
         db.Projects.Add(model);
-        var result = await db.SaveChangesAsync();
-        if (result >= 1)
-            return true;
-        return false;
+        return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
     public async Task<bool> DeleteAsync(int userId, int projectId)
@@ -31,14 +28,9 @@ public class ProjectService : IProjectService
             return false;
 
         db.Projects.Remove(result);
-        var db_result = await db.SaveChangesAsync();
-        if (db_result >= 1)
-            return true;
-
-        return false;
+        return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
     public async Task<List<Project>> GetAllAsync(int userId)
-    => await db.Projects.Where(X => X.UserId == userId).ToListAsync();
-
+               => await db.Projects.Where(X => X.UserId == userId).ToListAsync();
 }
