@@ -12,12 +12,7 @@ public class OriginService : IOriginService
     {
         db = new ConfSysDbContext();
     }
-    public async Task<List<Origin>> OriginsList(string origin)
-    {
-        var result = await db.Origins.Where(x => x.Name == origin).Select(g => new Origin
-        {
-            Name = g.Name
-        }).ToListAsync();
-        return result;
-    }
+
+    public async Task<List<Origin>> GetAllOriginAsync()
+      => await db.Origins.ToListAsync();
 }

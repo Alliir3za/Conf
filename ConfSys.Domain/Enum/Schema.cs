@@ -1,7 +1,6 @@
 ﻿namespace ConfSys.Domain.Enum;
 
-public enum Schema
+public enum Schema : byte
 {
     Base
 }
-

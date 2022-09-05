@@ -1,24 +1,22 @@
 ﻿#nullable disable
-using ConfSys.Domain.Enum;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConfSys.Domain.Entity;
+
 [Table(nameof(Project), Schema = nameof(Schema.Base))]
 public class Project
 {
     [Key]
     public int ProjectId { get; set; }
 
+    [ForeignKey(nameof(UserId))]
+    public User User { get; set; }
+    public int UserId { get; set; }
+
     [Required]
-    [MaxLength(50)]
+    [MaxLength(25)]
     public string Name { get; set; }
 
+    [Required]
     [MaxLength(75)]
-    public string WebSite { get; set; }
-
-    [MaxLength(200)]
-    public long Description { get; set; }
-    public ICollection<User> Users { get; set; }
-
+    public string Website { get; set; }
 }

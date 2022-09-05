@@ -1,10 +1,8 @@
-﻿using ConfSys.Domain.Entity;
-
-namespace ConfSys.Service.Interface;
+﻿namespace ConfSys.Service.Interface;
 
 public interface IUserService
 {
-    public Task<bool> LogIn(string Email, string Password);
-    public Task<List<User>> CreatUser(string name,string family);
-
+    Task<bool> CreateAsync(User model);
+    Task<User> LoginAsync(string email, string password);
+    Task<bool> DeleteUserAsync(int userId);
 }

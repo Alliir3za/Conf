@@ -14,25 +14,38 @@ public class UserService : IUserService
         db = new ConfSysDbContext();
     }
 
-    public async Task<List<User>> CreatUser(string name, string family)
+    public async Task<bool> CreateAsync(User model)
     {
-        var result = await db.Users.Where(g => g.Name == name && g.Family == family).Select(x => new User
-        {
-            Name = x.Name,
-            Family = x.Family
-        }).ToListAsync();
+        Random rnd = new();
+        model.Password = rnd.Next(1000, 1000000).ToString();
+
+        db.Users.Add(model);
+        var result = await db.SaveChangesAsync();
+        if (result >= 1)
+            return true;
+
+        return false;
+    }
+
+    public async Task<bool> DeleteUserAsync(int userId)
+    {
+        var result = await db.Users.FirstOrDefaultAsync(x => x.UserId == userId);
+        if (result == null)
+            return false;
+        db.Users.Remove(result);
+
+        var result_2 = await db.SaveChangesAsync();
+        if (result_2 >= 1)
+            return true;
+        return false;
+    }
+
+    public async Task<User> LoginAsync(string email, string password)
+    {
+        var result = await db.Users.FirstOrDefaultAsync(X => X.Email == email && X.Password == password);
+        if (result is null)
+            return null;
 
         return result;
     }
-
-    public async Task<bool> IUserService.LogIn(string Email, string Password)
-    {
-        var result_1 = await db.Users.FirstOrDefaultAsync(x => x.Password == Password && x.Email == Email);
-        return true;
-
-        if (result_1 == null)
-            return false;
-
-    }
-
 }
