@@ -4,7 +4,7 @@
 
 namespace ConfSys.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,6 +52,33 @@ namespace ConfSys.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FamilyMember",
+                schema: "Base",
+                columns: table => new
+                {
+                    FamilyMemberId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Family = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Age = table.Column<byte>(type: "tinyint", nullable: false),
+                    Gender = table.Column<byte>(type: "tinyint", nullable: false),
+                    NationalCode = table.Column<string>(type: "char(10)", maxLength: 10, nullable: false),
+                    Relation = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FamilyMember", x => x.FamilyMemberId);
+                    table.ForeignKey(
+                        name: "FK_FamilyMember_User_UserId",
+                        column: x => x.UserId,
+                        principalSchema: "Base",
+                        principalTable: "User",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Project",
                 schema: "Base",
                 columns: table => new
@@ -75,6 +102,12 @@ namespace ConfSys.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_FamilyMember_UserId",
+                schema: "Base",
+                table: "FamilyMember",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Project_UserId",
                 schema: "Base",
                 table: "Project",
@@ -89,6 +122,10 @@ namespace ConfSys.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "FamilyMember",
+                schema: "Base");
+
             migrationBuilder.DropTable(
                 name: "Project",
                 schema: "Base");

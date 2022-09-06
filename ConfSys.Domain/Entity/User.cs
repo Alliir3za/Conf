@@ -1,6 +1,4 @@
 ﻿#nullable disable
-
-
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(User), Schema = nameof(Schema.Base))]
@@ -33,4 +31,6 @@ public class User
     public string Password { get; set; }
 
     public ICollection<Project> Projects { get; set; }
+    public ICollection<FamilyMember> FamilyMembers { get; set; }
+    public ICollection<Members> Members { get; set; }
 }

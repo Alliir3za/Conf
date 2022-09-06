@@ -1,5 +1,4 @@
 ﻿#nullable disable
-
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(Project), Schema = nameof(Schema.Base))]
@@ -19,4 +18,6 @@ public class Project
     [Required]
     [MaxLength(75)]
     public string Website { get; set; }
+    public ICollection<Members> Members { get; set; }
+
 }

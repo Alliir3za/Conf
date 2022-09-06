@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConfSys.Data.Migrations
 {
     [DbContext(typeof(ConfSysDbContext))]
-    [Migration("20220904095747_Init")]
-    partial class Init
+    [Migration("20220906105853_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,48 @@ namespace ConfSys.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("ConfSys.Domain.Entity.FamilyMember", b =>
+                {
+                    b.Property<int>("FamilyMemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FamilyMemberId"), 1L, 1);
+
+                    b.Property<byte>("Age")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Family")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<byte>("Gender")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("NationalCode")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("char(10)");
+
+                    b.Property<int>("Relation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FamilyMemberId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("FamilyMember", "Base");
+                });
 
             modelBuilder.Entity("ConfSys.Domain.Entity.Origin", b =>
                 {
@@ -110,6 +152,17 @@ namespace ConfSys.Data.Migrations
                     b.ToTable("User", "Base");
                 });
 
+            modelBuilder.Entity("ConfSys.Domain.Entity.FamilyMember", b =>
+                {
+                    b.HasOne("ConfSys.Domain.Entity.User", "User")
+                        .WithMany("FamilyMembers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ConfSys.Domain.Entity.Project", b =>
                 {
                     b.HasOne("ConfSys.Domain.Entity.User", "User")
@@ -139,6 +192,8 @@ namespace ConfSys.Data.Migrations
 
             modelBuilder.Entity("ConfSys.Domain.Entity.User", b =>
                 {
+                    b.Navigation("FamilyMembers");
+
                     b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
