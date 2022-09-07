@@ -19,5 +19,4 @@ public class Project
     [MaxLength(75)]
     public string Website { get; set; }
     public ICollection<Members> Members { get; set; }
-
 }

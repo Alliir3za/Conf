@@ -2,16 +2,17 @@
 using ConfSys.Domain.Enum;
 using ConfSys.Service.Implement;
 using ConfSys.Service.Interface;
-
-//IUserService userService = new UserService();
+//init
+IUserService userService = new UserService();
 //await userService.CreateAsync(new User
 //{
-//    Email = "Hsein.ads@gmail.com",
-//    Family = "Mousavi",
-//    Gender = Gender.Male,
-//    Name = "Hossein",
-//    OriginId = 2,
+//    Name = "Ana",
+//    Family = "Cheri",
+//    Gender = Gender.Female,
+//    Email = "anach@gmail.com",
+//    OriginId = 1
 //});
+
 //var resutl = await userService.LoginAsync("mha.karimi@gmail.com", "418443");
 //IProjectService projectService = new ProjectService();
 
@@ -34,7 +35,6 @@ using ConfSys.Service.Interface;
 //    Gender = Gender.Female,
 //    NationalCode = "0016596055",
 //    Relation = Relation.Mother,
-
 //});
 //await familyMemberService.DeleteFamilyAsync(4);
 //await familyMemberService.GetAllFamilyMembersAsync(6);

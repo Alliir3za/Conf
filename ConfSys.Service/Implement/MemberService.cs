@@ -1,5 +1,6 @@
 ﻿#nullable disable
 using ConfSys.Data;
+using ConfSys.Domain.Entity;
 using ConfSys.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 

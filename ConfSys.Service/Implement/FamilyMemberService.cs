@@ -31,5 +31,4 @@ public class FamilyMemberService : IFamilyMemberService
 
     public async Task<List<FamilyMember>> GetAllFamilyMembersAsync(int userId)
       => await db.FamilyMembers.Where(x => x.UserId == userId).ToListAsync();
-
 }

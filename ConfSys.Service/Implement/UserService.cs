@@ -15,10 +15,10 @@ public class UserService : IUserService
 
     public async Task<bool> CreateAsync(User model)
     {
-        Random rnd = new();
-        model.Password = rnd.Next(1000, 1000000).ToString();
+        Random rnd = new Random();
+        model.Password = rnd.Next(10000, 1000000).ToString();
 
-        db.Users.Add(model);
+        await db.Users.AddAsync(model);
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
