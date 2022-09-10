@@ -10,7 +10,7 @@ public class Members
 
     [ForeignKey(nameof(UserId))]
     public User User { get; set; }
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
 
     [ForeignKey(nameof(ProjectId))]
     public Project Project { get; set; }
@@ -20,9 +20,11 @@ public class Members
     public DateTime Engagement { get; set; }
 
     [Required]
-    public DateTime EndOfEngagement { get; set; }
+    [MaxLength(25)]
+    public string Position { get; set; }
 
     [Required]
-    public string Position { get; set; }
+    public DateTime EndOfEngagement { get; set; }
+
 
 }

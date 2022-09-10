@@ -6,11 +6,11 @@ using ConfSys.Service.Interface;
 IUserService userService = new UserService();
 //await userService.CreateAsync(new User
 //{
-//    Name = "Ana",
-//    Family = "Cheri",
-//    Gender = Gender.Female,
-//    Email = "anach@gmail.com",
-//    OriginId = 1
+//    Name = "hosein",
+//    Family = "naeemaie",
+//    Gender = Gender.Male,
+//    Email = "hosein@gamil.com",
+//    OriginId = 2,
 //});
 
 //var resutl = await userService.LoginAsync("mha.karimi@gmail.com", "418443");
@@ -38,5 +38,8 @@ IUserService userService = new UserService();
 //});
 //await familyMemberService.DeleteFamilyAsync(4);
 //await familyMemberService.GetAllFamilyMembersAsync(6);
+IProjectService projectService = new ProjectService();
+var result = await projectService.GetAllProjects();
+Console.WriteLine(result);
 
 Console.ReadLine();

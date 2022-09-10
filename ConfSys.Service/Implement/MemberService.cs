@@ -1,5 +1,6 @@
 ﻿#nullable disable
 using ConfSys.Data;
+using ConfSys.Domain.Dtos;
 using ConfSys.Domain.Entity;
 using ConfSys.Service.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,7 @@ public class MemberService : IMemberService
 {
     private readonly ConfSysDbContext db;
 
-    public MemberService()
-    {
-        db = new ConfSysDbContext();
-    }
+    public MemberService() => db = new ConfSysDbContext();
 
     public async Task<bool> CreateAsync(Members member)
     {

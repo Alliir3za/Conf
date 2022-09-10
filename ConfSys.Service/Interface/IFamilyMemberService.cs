@@ -2,7 +2,7 @@
 
 public interface IFamilyMemberService
 {
-    Task<bool> CreateFamilyAsync(FamilyMember model);
-    Task<bool> DeleteFamilyAsync(int userId);
-    Task<List<FamilyMember>> GetAllFamilyMembersAsync(int userId);
+    Task<bool> CreateAsync(FamilyMember model);
+    Task<bool> DeleteAsync(int userId);
+    Task<List<FamilyMember>> GetAllAsync(int userId);  
 }

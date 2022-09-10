@@ -2,10 +2,10 @@
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(FamilyMember), Schema = nameof(Schema.Base))]
-
 public class FamilyMember
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int FamilyMemberId { get; set; }
 
     [ForeignKey(nameof(UserId))]
@@ -13,7 +13,7 @@ public class FamilyMember
     public int UserId { get; set; }
 
     [Required]
-    [MaxLength(20)]
+    [MaxLength(30)]
     public string Name { get; set; }
 
     [Required]
@@ -31,8 +31,7 @@ public class FamilyMember
     [MaxLength(10)]
     public string NationalCode { get; set; }
 
-    [Required] 
+    [Required]
     public Relation Relation { get; set; }
-
 
 }

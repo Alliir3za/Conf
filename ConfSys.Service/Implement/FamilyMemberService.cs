@@ -8,27 +8,23 @@ namespace ConfSys.Service.Implement;
 public class FamilyMemberService : IFamilyMemberService
 {
     private readonly ConfSysDbContext db;
+    public FamilyMemberService() => db = new ConfSysDbContext();
 
-    public FamilyMemberService()
+    public async Task<bool> CreateAsync(FamilyMember model)
     {
-        db = new ConfSysDbContext();
-    }
-    public async Task<bool> CreateFamilyAsync(FamilyMember model)
-    {
-        db.FamilyMembers.Add(model);
+        await db.FamilyMembers.AddAsync(model);
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
-    public async Task<bool> DeleteFamilyAsync(int userId)
+    public async Task<bool> DeleteAsync(int userId)
     {
         var result = await db.FamilyMembers.FirstOrDefaultAsync(x => x.UserId == userId);
-        if (result == null)
+        if (result is null) // pattern matching
             return false;
         db.FamilyMembers.Remove(result);
-
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
-    public async Task<List<FamilyMember>> GetAllFamilyMembersAsync(int userId)
-      => await db.FamilyMembers.Where(x => x.UserId == userId).ToListAsync();
+    public async Task<List<FamilyMember>> GetAllAsync(int userId)
+       => await db.FamilyMembers.Where(x => x.UserId == userId).ToListAsync();
 }
