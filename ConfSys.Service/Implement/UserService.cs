@@ -1,10 +1,4 @@
 ﻿#nullable disable
-using ConfSys.Data;
-using ConfSys.Domain.Dtos;
-using ConfSys.Domain.Entity;
-using ConfSys.Service.Interface;
-using Microsoft.EntityFrameworkCore;
-
 namespace ConfSys.Service.Implement;
 
 public class UserService : IUserService
@@ -29,6 +23,18 @@ public class UserService : IUserService
         db.Users.Remove(result);
 
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
+    }
+
+    public async Task<List<UserList>> GetAll()
+    {
+        var result = await db.Users.Include(x => x.Origin).Include(c => c.FamilyMembers).Select(u => new UserList
+        {
+            Name = u.Name,
+            Family = u.Family,
+            Origin = u.Origin.Name,             
+             
+        }).ToListAsync();
+        return result;
     }
 
     public async Task<User> LoginAsync(string email, string password)

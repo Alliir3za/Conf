@@ -1,10 +1,4 @@
 ﻿#nullable disable
-using ConfSys.Data;
-using ConfSys.Domain.Dtos;
-using ConfSys.Domain.Entity;
-using ConfSys.Service.Interface;
-using Microsoft.EntityFrameworkCore;
-
 namespace ConfSys.Service.Implement;
 
 public class MemberService : IMemberService
@@ -29,7 +23,32 @@ public class MemberService : IMemberService
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
+
     public async Task<List<Members>> GetAll(int userId)
     => await db.Members.Where(x => x.UserId == userId).ToListAsync();
 
+    public async Task<List<MemberList>> GetList()
+    {
+        var result = await db.Members.Include(x => x.User).ThenInclude(k => k.Origin).Include(c => c.Project).Select(m => new MemberList
+        {
+            Name = m.User.Name,
+            ProjectName = m.Project.ProjectName,
+            Origin = m.User.Origin.Name,
+
+        }).ToListAsync();
+        return result;
+    }
+
+    public async Task<List<MemberList>> GetAllProjects()
+    => await db.Members.Include(x => x.Project)
+                       .Include(x => x.User)
+                       .ThenInclude(x => x.Origin)
+                       .Select(m => new MemberList
+                       {
+                           Name = m.User.Name,
+                           Family = m.User.Family,
+                           ProjectName = m.Project.ProjectName,
+                           Origin = m.User.Origin.Name,
+                           Position = m.Position
+                       }).ToListAsync();
 }

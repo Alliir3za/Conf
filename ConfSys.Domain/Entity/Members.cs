@@ -26,5 +26,4 @@ public class Members
     [Required]
     public DateTime EndOfEngagement { get; set; }
 
-
 }

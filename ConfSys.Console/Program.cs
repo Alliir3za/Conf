@@ -38,8 +38,9 @@ IUserService userService = new UserService();
 //});
 //await familyMemberService.DeleteFamilyAsync(4);
 //await familyMemberService.GetAllFamilyMembersAsync(6);
-IProjectService projectService = new ProjectService();
-var result = await projectService.GetAllProjects();
-Console.WriteLine(result);
-
+//IMemberService memberService = new MemberService();
+//var result = await memberService.GetList();
+IUserService userService1 = new UserService();
+var rsult = await userService1.GetAll();
+Console.WriteLine(rsult);
 Console.ReadLine();

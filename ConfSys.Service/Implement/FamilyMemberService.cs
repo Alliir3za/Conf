@@ -1,8 +1,4 @@
 ﻿#nullable disable
-using ConfSys.Data;
-using ConfSys.Service.Interface;
-using Microsoft.EntityFrameworkCore;
-
 namespace ConfSys.Service.Implement;
 
 public class FamilyMemberService : IFamilyMemberService
