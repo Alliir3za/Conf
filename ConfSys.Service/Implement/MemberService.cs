@@ -32,7 +32,7 @@ public class MemberService : IMemberService
         var result = await db.Members.Include(x => x.User).ThenInclude(k => k.Origin).Include(c => c.Project).Select(m => new MemberList
         {
             Name = m.User.Name,
-            ProjectName = m.Project.ProjectName,
+            ProjectName = m.Project.Name,
             Origin = m.User.Origin.Name,
 
         }).ToListAsync();
@@ -47,7 +47,7 @@ public class MemberService : IMemberService
                        {
                            Name = m.User.Name,
                            Family = m.User.Family,
-                           ProjectName = m.Project.ProjectName,
+                           ProjectName = m.Project.Name,
                            Origin = m.User.Origin.Name,
                            Position = m.Position
                        }).ToListAsync();

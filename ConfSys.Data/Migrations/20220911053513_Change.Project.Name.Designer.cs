@@ -4,6 +4,7 @@ using ConfSys.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConfSys.Data.Migrations
 {
     [DbContext(typeof(ConfSysDbContext))]
-    partial class ConfSysDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220911053513_Change.Project.Name")]
+    partial class ChangeProjectName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

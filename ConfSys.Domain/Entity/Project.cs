@@ -13,7 +13,7 @@ public class Project
 
     [Required]
     [MaxLength(25)]
-    public string ProjectName { get; set; }
+    public string Name { get; set; }
 
     [Required]
     [MaxLength(75)]

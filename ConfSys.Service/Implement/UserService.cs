@@ -1,4 +1,6 @@
 ﻿#nullable disable
+using ConfSys.Domain.Dtos.User;
+
 namespace ConfSys.Service.Implement;
 
 public class UserService : IUserService
@@ -31,12 +33,24 @@ public class UserService : IUserService
         {
             Name = u.Name,
             Family = u.Family,
-            Origin = u.Origin.Name,             
-             
+            Origin = u.Origin.Name,
+
         }).ToListAsync();
         return result;
     }
 
     public async Task<User> LoginAsync(string email, string password)
            => await db.Users.FirstOrDefaultAsync(X => X.Email == email && X.Password == password);
+
+    public async Task<bool> Update(UserUpdateDto model)
+    {
+        var user = await db.Users.FirstOrDefaultAsync(X => X.UserId == model.UserId);
+        if (user is null)
+            return false;
+
+        user.Name = model.Name;
+        user.Family = model.Family;
+        user.Gender = model.Gender;
+        return (await db.SaveChangesAsync()).ToSaveChangeResult();
+    }
 }
