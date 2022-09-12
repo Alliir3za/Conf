@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConfSys.Domain\ConfSys.Domain.csproj" />
+    <ProjectReference Include="..\ConfSys.Service\ConfSys.Service.csproj" />
+  </ItemGroup>
+
+</Project>

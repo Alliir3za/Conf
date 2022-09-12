@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfSys.Data", "ConfSys.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfSys.Service", "ConfSys.Service\ConfSys.Service.csproj", "{7D136880-BAC9-47E8-BF9F-32AB8EBFDE97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfSys.Console", "ConfSys.Console\ConfSys.Console.csproj", "{0AE55DED-3D2C-4B9E-90A2-AB4EE390BB6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfSys.Api", "ConfSys.Api\ConfSys.Api.csproj", "{DA5BFE19-54EC-434D-A5B7-79C7AD44001A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{7D136880-BAC9-47E8-BF9F-32AB8EBFDE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D136880-BAC9-47E8-BF9F-32AB8EBFDE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D136880-BAC9-47E8-BF9F-32AB8EBFDE97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0AE55DED-3D2C-4B9E-90A2-AB4EE390BB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AE55DED-3D2C-4B9E-90A2-AB4EE390BB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AE55DED-3D2C-4B9E-90A2-AB4EE390BB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AE55DED-3D2C-4B9E-90A2-AB4EE390BB6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA5BFE19-54EC-434D-A5B7-79C7AD44001A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA5BFE19-54EC-434D-A5B7-79C7AD44001A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA5BFE19-54EC-434D-A5B7-79C7AD44001A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA5BFE19-54EC-434D-A5B7-79C7AD44001A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

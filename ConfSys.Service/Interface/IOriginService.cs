@@ -2,5 +2,5 @@
 
 public interface IOriginService
 {
-    Task<List<Origin>> GetAllOriginAsync();
+    Task<List<Origin>> GetAllAsync(); 
 }
