@@ -25,6 +25,4 @@ public class ProjectService : IProjectService
 
     public async Task<List<Project>> GetAllAsync(int userId)
                => await db.Projects.Where(X => X.UserId == userId).ToListAsync();
-
-   
 }
