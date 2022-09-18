@@ -8,7 +8,7 @@ public class ProjectService : IProjectService
 
     public async Task<bool> CreateAsync(Project model)
     {
-        db.Projects.Add(model);
+        await db.Projects.AddAsync(model);
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 

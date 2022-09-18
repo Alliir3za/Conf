@@ -21,6 +21,13 @@ public class FamilyMemberService : IFamilyMemberService
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
-    public async Task<List<FamilyMember>> GetAllAsync(int userId)
-       => await db.FamilyMembers.Where(x => x.UserId == userId).ToListAsync();
+    public async Task<object> GetAllAsync(int userId)
+       => await db.FamilyMembers.Where(x => x.UserId == userId)
+        .Select(X => new
+        {
+            X.Name,
+            X.Family,
+            X.Gender
+        })
+        .ToListAsync();
 }

@@ -9,10 +9,8 @@ public class FamilyMemberController : Controller
 {
     private readonly FamilyMemberService _familyMember;
 
-    public FamilyMemberController()
-    {
-        _familyMember = new FamilyMemberService();
-    }
+    public FamilyMemberController() => _familyMember = new FamilyMemberService();
+
     public async Task<ActionResult> Create(FamilyMember familyMember)
         => Ok(await _familyMember.CreateAsync(familyMember));
 

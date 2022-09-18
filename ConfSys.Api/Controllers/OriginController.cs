@@ -15,5 +15,4 @@ public class OriginController : Controller
     [HttpGet]
     public async Task<ActionResult> GetAll()
         => Ok(await _originService.GetAllAsync());
-
 }

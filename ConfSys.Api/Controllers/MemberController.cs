@@ -30,5 +30,4 @@ public class MemberController : Controller
     [HttpGet]
     public async Task<ActionResult> GetAllProject()
         => Ok(await _memberService.GetAllProjects());
-
 }

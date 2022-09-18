@@ -23,7 +23,6 @@ public class MemberService : IMemberService
         return (await db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
-
     public async Task<List<Members>> GetAll(int userId)
     => await db.Members.Where(x => x.UserId == userId).ToListAsync();
 
@@ -34,6 +33,8 @@ public class MemberService : IMemberService
             Name = m.User.Name,
             ProjectName = m.Project.Name,
             Origin = m.User.Origin.Name,
+            Position = m.Position,
+            Family = m.User.Family
 
         }).ToListAsync();
         return result;

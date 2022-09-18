@@ -10,4 +10,3 @@ public class ProjectList
     public string Position { get; set; }
     public DateTime Engagement { get; set; }
 }
-

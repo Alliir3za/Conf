@@ -1,4 +1,6 @@
 ﻿#nullable disable
+using System.Text.Json.Serialization;
+
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(FamilyMember), Schema = nameof(Schema.Base))]
@@ -8,6 +10,7 @@ public class FamilyMember
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int FamilyMemberId { get; set; }
 
+    [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     public User User { get; set; }
     public int UserId { get; set; }
