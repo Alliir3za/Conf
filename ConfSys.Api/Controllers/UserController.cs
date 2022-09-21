@@ -1,6 +1,7 @@
 ﻿using ConfSys.Domain.Dtos.User;
 using ConfSys.Domain.Entity;
 using ConfSys.Service.Implement;
+using ConfSys.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfSys.Api.Controllers;
@@ -8,8 +9,8 @@ namespace ConfSys.Api.Controllers;
 [Route("[controller]/[action]")]
 public class UserController : Controller
 {
-    private readonly UserService _userService;
-    public UserController() => _userService = new UserService();
+    private readonly IUserService _userService;
+    public UserController(IUserService userService) => _userService = userService;
 
     [HttpGet]
     public async Task<ActionResult> GetAll()
@@ -18,7 +19,7 @@ public class UserController : Controller
     [HttpPost]
     public async Task<ActionResult> CreateAsync(User user)
      => Ok(await _userService.CreateAsync(user));
-     
+
     [HttpPost]
     public async Task<ActionResult> LoginAsync([FromBody] UserLoginDto model)
         => Ok(await _userService.LoginAsync(model.Email, model.Password));

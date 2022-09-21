@@ -1,6 +1,7 @@
 ﻿using ConfSys.Domain.Dtos;
 using ConfSys.Domain.Entity;
 using ConfSys.Service.Implement;
+using ConfSys.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfSys.Api.Controllers;
@@ -8,8 +9,9 @@ namespace ConfSys.Api.Controllers;
 [Route("[controller]/[action]")]
 public class MemberController : Controller
 {
-    private readonly MemberService _memberService;
-    public MemberController() => _memberService = new MemberService();
+    private readonly IMemberService _memberService;
+
+    public MemberController(IMemberService memberService) => _memberService = memberService;
 
     [HttpGet]
     public async Task<ActionResult> Create(Members member)

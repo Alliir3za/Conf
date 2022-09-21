@@ -1,4 +1,6 @@
-﻿namespace ConfSys.Service.Interface;
+﻿using ConfSys.Domain.Entity;
+
+namespace ConfSys.Service.Interface;
 
 public interface IProjectService
 {

@@ -1,34 +1,36 @@
 ﻿#nullable disable
+using ConfSys.Domain.Entity;
+
 namespace ConfSys.Service.Implement;
 
 public class MemberService : IMemberService
 {
-    private readonly ConfSysDbContext db;
+    private readonly ConfSysDbContext _db;
 
-    public MemberService() => db = new ConfSysDbContext();
+    public MemberService(ConfSysDbContext db) => _db = db;
 
     public async Task<bool> CreateAsync(Members member)
     {
-        db.Members.Add(member);
-        return (await db.SaveChangesAsync()).ToSaveChangeResult();
+        _db.Members.Add(member);
+        return (await _db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
     public async Task<bool> DeleteAsync(int userId)
     {
-        var result = await db.Members.FirstOrDefaultAsync(x => x.UserId == userId);
+        var result = await _db.Members.FirstOrDefaultAsync(x => x.UserId == userId);
         if (result == null)
             return false;
-        db.Members.Remove(result);
+        _db.Members.Remove(result);
 
-        return (await db.SaveChangesAsync()).ToSaveChangeResult();
+        return (await _db.SaveChangesAsync()).ToSaveChangeResult();
     }
 
     public async Task<List<Members>> GetAll(int userId)
-    => await db.Members.Where(x => x.UserId == userId).ToListAsync();
+    => await _db.Members.Where(x => x.UserId == userId).ToListAsync();
 
     public async Task<List<MemberList>> GetList()
     {
-        var result = await db.Members.Include(x => x.User).ThenInclude(k => k.Origin).Include(c => c.Project).Select(m => new MemberList
+        var result = await _db.Members.Include(x => x.User).ThenInclude(k => k.Origin).Include(c => c.Project).Select(m => new MemberList
         {
             Name = m.User.Name,
             ProjectName = m.Project.Name,
@@ -41,7 +43,7 @@ public class MemberService : IMemberService
     }
 
     public async Task<List<MemberList>> GetAllProjects()
-    => await db.Members.Include(x => x.Project)
+    => await _db.Members.Include(x => x.Project)
                        .Include(x => x.User)
                        .ThenInclude(x => x.Origin)
                        .Select(m => new MemberList

@@ -1,5 +1,6 @@
 ﻿using ConfSys.Domain.Entity;
 using ConfSys.Service.Implement;
+using ConfSys.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConfSys.Api.Controllers;
@@ -7,9 +8,9 @@ namespace ConfSys.Api.Controllers;
 [Route("[controller]/[action]")]
 public class FamilyMemberController : Controller
 {
-    private readonly FamilyMemberService _familyMember;
+    private readonly IFamilyMemberService _familyMember;
 
-    public FamilyMemberController() => _familyMember = new FamilyMemberService();
+    public FamilyMemberController(IFamilyMemberService familyMember) => _familyMember = familyMember;
 
     public async Task<ActionResult> Create(FamilyMember familyMember)
         => Ok(await _familyMember.CreateAsync(familyMember));
