@@ -6,6 +6,7 @@ namespace ConfSys.Domain.Entity;
 public class User
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserId { get; set; }
 
     [ForeignKey(nameof(OriginId))]
@@ -24,6 +25,7 @@ public class User
 
     [Required]
     [MaxLength(75)]
+    [EmailAddress]
     public string Email { get; set; }
 
     [Required]
