@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConfSys.Api.Controllers;
 
+[ApiVersion("1.0")]
 [Route("[controller]/[action]")]
 public class UserController : Controller
 {

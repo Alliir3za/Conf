@@ -1,8 +1,12 @@
-﻿namespace ConfSys.Domain.Enum;
+﻿using System.ComponentModel;
 
-    public enum Gender : byte
-    {
-        Male = 1,
-        Female = 0
-    }   
-     
+namespace ConfSys.Domain.Enum;
+
+public enum Gender : byte
+{
+    [Description("مرد")]
+    Male = 1,
+
+    [Description("زن")]
+    Female = 0
+}

@@ -14,7 +14,7 @@ public class ProjectController : Controller
 
     [HttpGet]
     public async Task<ActionResult> GetAllAsync(int userId)
-    => Ok(await _projectService.GetAllAsync(userId));
+        => Ok(await _projectService.GetAllAsync(userId));
 
     [HttpDelete]
     public async Task<ActionResult> DeleteAsync([FromBody] int userId, int projectId)

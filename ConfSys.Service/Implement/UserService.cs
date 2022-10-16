@@ -1,6 +1,7 @@
 ﻿#nullable disable
 using ConfSys.Domain.Dtos.User;
 using ConfSys.Domain.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConfSys.Service.Implement;
 
@@ -26,9 +27,8 @@ public class UserService : IUserService
         _db.Users.Remove(result);
 
         return (await _db.SaveChangesAsync()).ToSaveChangeResult();
-
     }
-
+    //addd
     public async Task<List<UserList>> GetAll()
     {
         var result = await _db.Users.Include(x => x.Origin).Include(c => c.FamilyMembers).Select(u => new UserList

@@ -10,7 +10,11 @@ public class ConfSysDbContext : DbContext
        : base(options)
     {
     }
-    
+
+    public ConfSysDbContext()
+    {
+    }
+
     public DbSet<User> Users { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<Origin> Origins { get; set; }
