@@ -1,32 +1,31 @@
 ﻿#nullable disable
+using ConfSys.Data.UnitOfWork;
 using ConfSys.Domain.Entity;
-using System.Diagnostics.Metrics;
 
 namespace ConfSys.Service.Implement;
 
 public class ProjectService : IProjectService
 {
-    private readonly ConfSysDbContext _db;
-    public ProjectService(ConfSysDbContext db) => _db = db;
+    private readonly IConfUnitOfWork _uow;
+    public ProjectService(IConfUnitOfWork uow) => _uow = uow;
 
-    public async Task<bool> CreateAsync(Project model)
-    {
-        await _db.Projects.AddAsync(model);
-        return (await _db.SaveChangesAsync()).ToSaveChangeResult();
- 
-    }
+    //public async Task<bool> CreateAsync(Project model)
+    //{
+    //    await _uow.ProjectRepo.AddAsync(model);
+    //    return (await _uow.SaveChangesAsync()).ToSaveChangeResult();
+    //}
 
-    public async Task<bool> DeleteAsync(int userId, int projectId)
-    {
-        var result = await _db.Projects.FirstOrDefaultAsync(X => X.UserId == userId && X.ProjectId == projectId);
+    //public async Task<bool> DeleteAsync(int userId, int projectId)
+    //{
+    //    var result = await _uow.ProjectRepo.FirstOrDefaultAsync(X => X.UserId == userId && X.ProjectId == projectId);
 
-        if (result is null)
-            return false;
+    //    if (result is null)
+    //        return false;
 
-        _db.Projects.Remove(result);
-        return (await _db.SaveChangesAsync()).ToSaveChangeResult();
-    }
+    //    _uow.ProjectRepo.Remove(result);
+    //    return (await _uow.SaveChangesAsync()).ToSaveChangeResult();
+    //}
 
     public async Task<List<Project>> GetAllAsync(int userId)
-               => await _db.Projects.Where(X => X.UserId == userId).ToListAsync();
+               => await _uow.ProjectRepo.Where(X => X.UserId == userId).ToListAsync();
 }

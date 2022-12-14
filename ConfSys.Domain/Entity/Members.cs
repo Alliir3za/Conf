@@ -1,11 +1,12 @@
 ﻿#nullable disable
+using ConfSys.Shared.Core.Entity;
 using System.Text.Json.Serialization;
 
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(Members), Schema = nameof(Schema.Base))]
 
-public class Members
+public class Members : IEntity
 {
     [Key]
     public int MembersId { get; set; }

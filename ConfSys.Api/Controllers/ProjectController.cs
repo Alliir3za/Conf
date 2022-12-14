@@ -16,11 +16,11 @@ public class ProjectController : Controller
     public async Task<ActionResult> GetAllAsync(int userId)
         => Ok(await _projectService.GetAllAsync(userId));
 
-    [HttpDelete]
-    public async Task<ActionResult> DeleteAsync([FromBody] int userId, int projectId)
-        => Ok(await _projectService.DeleteAsync(userId, projectId));
+    //[HttpDelete]
+    //public async Task<ActionResult> DeleteAsync([FromBody] int userId, int projectId)
+    //    => Ok(await _projectService.DeleteAsync(userId, projectId));
 
-    [HttpPost]
-    public async Task<ActionResult> CreateAsync([FromBody] Project project)
-        => Ok(await _projectService.CreateAsync(project));
+    //[HttpPost]
+    //public async Task<ActionResult> CreateAsync([FromBody] Project project)
+    //    => Ok(await _projectService.CreateAsync(project));
 }

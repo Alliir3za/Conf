@@ -1,9 +1,12 @@
 ﻿#nullable disable
+using ConfSys.Shared.Core.Entity;
+using System.Runtime;
+
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(User), Schema = nameof(Schema.Base))]
 
-public class User
+public class User : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,6 +35,10 @@ public class User
     [MaxLength(25)]
     public string Password { get; set; }
 
+    public DateTime? SendDateTime { get; set; }
+
+    public MessageType Status { get; set; }
+     
     public ICollection<Project> Projects { get; set; }
     public ICollection<FamilyMember> FamilyMembers { get; set; }
     public ICollection<Members> Members { get; set; }

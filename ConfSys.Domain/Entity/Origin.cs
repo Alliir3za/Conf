@@ -1,10 +1,12 @@
 ﻿#nullable disable
 
+using ConfSys.Shared.Core.Entity;
+
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(Origin), Schema = nameof(Schema.Base))]
 
-public class Origin
+public class Origin : IEntity
 {
     [Key]
     public int OriginId { get; set; }

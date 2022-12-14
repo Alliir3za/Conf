@@ -12,11 +12,11 @@ public class FamilyMemberController : Controller
 
     public FamilyMemberController(IFamilyMemberService familyMember) => _familyMember = familyMember;
 
-    public async Task<ActionResult> Create(FamilyMember familyMember)
-        => Ok(await _familyMember.CreateAsync(familyMember));
+    //public async Task<ActionResult> Create(FamilyMember familyMember)
+    //    => Ok(await _familyMember.CreateAsync(familyMember));
 
-    public async Task<ActionResult> Delete(int userId)
-        => Ok(await _familyMember.DeleteAsync(userId));
+    //public async Task<ActionResult> Delete(int userId)
+    //    => Ok(await _familyMember.DeleteAsync(userId));
 
     public async Task<ActionResult> GetAll(int userId)
         => Ok(await _familyMember.GetAllAsync(userId));

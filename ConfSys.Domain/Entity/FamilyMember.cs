@@ -1,10 +1,11 @@
 ﻿#nullable disable
+using ConfSys.Shared.Core.Entity;
 using System.Text.Json.Serialization;
 
 namespace ConfSys.Domain.Entity;
 
 [Table(nameof(FamilyMember), Schema = nameof(Schema.Base))]
-public class FamilyMember
+public class FamilyMember : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -13,9 +13,9 @@ public class MemberController : Controller
 
     public MemberController(IMemberService memberService) => _memberService = memberService;
 
-    [HttpGet]
-    public async Task<ActionResult> Create(Members member)
-        => Ok(await _memberService.CreateAsync(member));
+    //[HttpGet]
+    //public async Task<ActionResult> Create(Members member)
+    //    => Ok(await _memberService.CreateAsync(member));
 
     [HttpGet]
     public async Task<ActionResult> GetAll(int userId)
@@ -25,9 +25,9 @@ public class MemberController : Controller
     public async Task<ActionResult> GetList()
         => Ok(await _memberService.GetList());
 
-    [HttpPost]
-    public async Task<ActionResult> Delete(int userId)
-        => Ok(await _memberService.DeleteAsync(userId));
+    //[HttpPost]
+    //public async Task<ActionResult> Delete(int userId)
+    //    => Ok(await _memberService.DeleteAsync(userId));
 
     [HttpGet]
     public async Task<ActionResult> GetAllProject()
